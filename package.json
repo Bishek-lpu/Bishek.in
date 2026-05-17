@@ -7,10 +7,16 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "proxy": "node server.js"
   },
   "dependencies": {
     "@marsidev/react-turnstile": "^1.5.2",
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "http-proxy-middleware": "^3.0.5",
+    "https-proxy-agent": "^9.0.0",
     "react": "^19.2.6",
     "react-dom": "^19.2.6"
   },
