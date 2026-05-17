@@ -45,7 +45,14 @@ export default defineConfig({
         changeOrigin: true,
         secure: false,
         agent: agent,
-        rewrite: (path) => path.replace(/^\/check-ip/, '?format=json'),
+        rewrite: (path) => path.replace(/^\/check-ip/, '/?format=json'),
+        configure: (proxy) => {
+          proxy.on('error', (err, req, res) => {
+            console.error('IP Proxy Error:', err);
+            res.writeHead(500, { 'Content-Type': 'application/json' });
+            res.end(JSON.stringify({ error: 'Proxy connection failed. Check your proxy server.', details: err.message }));
+          });
+        }
       }
     }
   }
